@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>music world</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .comtent {
+        display: flex;
+        flex-direction: column;
+      }
+      .juzhong {
+        text-align: center;
+      }
+      .toudingbeijing {
+        width: 100%;
+        height: 400px;
+        background: -webkit-radial-gradient(
+          top,
+          rgb(19, 19, 20),
+          rgb(99, 82, 82),
+          rgba(61, 42, 34, 0.247)
+        );
+      }
+
+      .tczt {
+        font-size: 20px;
+        color: darkgrey;
+        font-family: 微软雅黑 !important;
+        text-decoration: none;
+      }
+      a:hover {
+        color: rgb(223, 65, 65);
+      }
+      .diercengzit {
+        font-family: 微软雅黑 !important;
+        margin-top: 200px;
+        letter-spacing: 20px;
+        font-size: 30px;
+        color: rgb(150, 148, 148);
+        text-align: center;
+      }
+      .wavy {
+        position: relative;
+        /*倒影效果*/
+        -webkit-box-reflect: below -12px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+      }
+      .wavy span {
+        /*第二层字体设置*/
+        margin-top: 10px;
+        position: relative;
+        display: inline-block;
+        color: rgb(241, 18, 18);
+        font-size: 25px;
+        text-transform: uppercase;
+        letter-spacing: 8px;
+        /*执行动画：动画名 时长 加速后减速 无限次播放*/
+        animation: wavyAnimate 1s ease-in-out infinite;
+        /*通过var函数调用自定义属性--i，在计算出动画延迟时间*/
+        animation-delay: calc(0.04s * var(--i));
+      }
+      /*定义动画*/
+      @keyframes wavyAnimate {
+        0% {
+          transform: translateY(0);
+        }
+        20% {
+          transform: translateY(-20px);
+        }
+        40%,
+        100% {
+          transform: translateY(0);
+        }
+      }
+      .kapian {
+        width: 208px;
+        height: 420px;
+        border-radius: 20px;
+        box-shadow: 2px 3px 3px rgb(139, 138, 138);
+        overflow: hidden;
+        transition: all 0.3s;
+      }
+      .kapian:hover {
+        box-shadow: 16px 16px 16px rgb(58, 56, 56);
+      }
+      .tu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 420px;
+        overflow: hidden;
+      }
+      .tu img {
+        width: 100%;
+        height: 100%;
+        transition: all 0.5s;
+      }
+      .kapian:hover .tu img {
+        transform: scale(1.2);
+        filter: blur(1px);
+      }
+      .wenben {
+        position: absolute;
+        bottom: -200px;
+        width: 100%;
+        height: 300px;
+        transition: 0.5s;
+      }
+      .kapian:hover .wenben {
+        bottom: 0px;
+      }
+      .wenben h2 {
+        color: rgb(249, 250, 253);
+        line-height: 60px;
+        text-align: center;
+        font-family: "微软雅黑 !important";
+      }
+      .wenben p {
+        color: rgb(249, 250, 253);
+        padding: 0 30px;
+        font-family: "fangsong";
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 20px;
+        text-align: center;
+      }
+      /*第五层圆点设置*/
+      .yuan {
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        border-radius: 50%;
+      }
+      /*第六层弹性盒子，一排排不下时允许换行*/
+      .main {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      /*第六层弹性盒子，这里的flex：0 1 24.84%是代表容器里装着的东西按一排的比例来平均放*/
+      .main-lists {
+        margin-top: 30px;
+        flex: 0 1 24.84%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+      .main-lists img {
+        border-radius: 10%;
+        box-shadow: 8px 10px 10px rgb(139, 138, 138);
+      }
+      /*第六层字体设置*/
+      .dlczt {
+        font-size: 15px;
+        color: rgb(41, 33, 33);
+        font-family: 微软雅黑 !important;
+        margin-top: 10px;
+      }
+      /*第六层音频大小位置透明度设置*/
+      .yinpin {
+        width: 60%;
+        margin-bottom: -205px;
+        opacity: 0.5;
+      }
+      /*第九层*/
+      /*第九层弹性盒子设置*/
+      .flex {
+        display: flex;
+      }
+      .djhz {
+        width: 400px;
+        height: 572px;
+        margin: 45px 45px 45px 45px;
+        border-radius: 10%;
+        background-color: rgb(241, 239, 236);
+        border: 1px solid rgb(212, 206, 206);
+      }
+      .djtu {
+        height: 200px;
+        width: 400px;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+      }
+      /*第九层文字行高居中设置*/
+      .hgjz {
+        height: 60px;
+        text-align: center;
+        line-height: 55px;
+      }
+      /*第九层文字样式设置*/
+      .djztys {
+        color: rgb(15, 14, 14);
+        text-decoration: none;
+      }
+      @media (max-width: 600px) {
+        .shiping {
+          display: none;
+        }
+        .bangdang {
+          margin-left: 3px;
+        }
+      }
+    </style>
+  </head>
+  <body class="comtent">
+    <!--第一层-->
+    <div class="toudingbeijing juzhong">
+      <div
+        style="
+          font-weight: bold;
+          font-size: 40px;
+          color: rgb(216, 213, 213);
+          margin: 5px;
+          font-family: 微软雅黑 !important;
+        "
+      >
+        music world &emsp;&emsp;
+        <a href="https://music.163.com/#" class="tczt"> 发现音乐&emsp; </a>
+        <a href="https://music.163.com/#/my/" class="tczt"> 我的音乐&emsp;</a>
+        <a href="https://music.163.com/#/friend" class="tczt"> 关注&emsp;</a>
+        <a href="https://music.163.com/store/product" class="tczt">
+          商城&emsp;</a
+        >
+        <a href="https://music.163.com/st/musician" class="tczt">
+          音乐人&emsp;</a
+        >
+        <a href="https://music.163.com/st/musician" class="tczt"> 登录&emsp;</a>
+      </div>
+      <video
+        autoplay
+        muted
+        loop
+        style="
+          border-radius: 20px;
+          box-shadow: 0px 0px 10px 5px rgb(93, 93, 93);
+          height: 500px;
+          margin: 10px auto;
+        "
+        class="shiping"
+      >
+        <source src="./shipingaoguang222.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!--第二层-->
+    <div class="comtent diercengzit">选你所选</div>
+    <!--  --i是自定义属性，可以通过var函数调用-->
+    <div class="wavy juzhong">
+      <span style="--i: 1">C</span>
+      <span style="--i: 2">h</span>
+      <span style="--i: 3">o</span>
+      <span style="--i: 4">o</span>
+      <span style="--i: 5">s</span>
+      <span style="--i: 6">e&emsp;</span>
+      <span style="--i: 7">f</span>
+      <span style="--i: 8">o</span>
+      <span style="--i: 9">r&emsp;</span>
+      <span style="--i: 10">y</span>
+      <span style="--i: 11">o</span>
+      <span style="--i: 12">u</span>
+      <span style="--i: 13">r</span>
+      <span style="--i: 14">s</span>
+      <span style="--i: 15">e</span>
+      <span style="--i: 16">l</span>
+      <span style="--i: 17">f</span>
+    </div>
+
+    <!--第三层-->
+    <!--第三层第一张图片-->
+    <div
+      class="kapian shiping"
+      style="position: relative; margin-top: 60px; margin-left: 270px"
+    >
+      <div class="tu">
+        <img src="./1111.jpg" />
+      </div>
+      <div class="wenben">
+        <a
+          href="https://music.163.com/#/playlist?id=2829883282"
+          style="text-decoration: none"
+          ><h2>华语</h2>
+          <p style="padding-bottom: 20px">私人订制</p>
+          <p>全都是耐听的华语好歌这里是你的专属华语日推</p></a
+        >
+      </div>
+    </div>
+    <!--第三层第二张图片-->
+    <div
+      class="kapian"
+      style="position: relative; margin-top: -350px; margin-left: 560px"
+    >
+      <div class="tu">
+        <img src="./222.jpg" />
+      </div>
+      <div class="wenben">
+        <a
+          href="https://music.163.com/#/playlist?id=5172410111"
+          style="text-decoration: none"
+          ><h2>流行</h2>
+          <p style="padding-bottom: 20px">点唱机</p>
+          <p>转眼2011年代已经成为过去 让流行点唱机 带你一起重温</p></a
+        >
+      </div>
+    </div>
+    <!--第三层第三张图片-->
+    <div
+      class="kapian"
+      style="position: relative; margin-top: -490px; margin-left: 850px"
+    >
+      <div class="tu">
+        <img src="./3333.jpg" />
+      </div>
+      <div class="wenben">
+        <a
+          href="https://music.163.com/#/playlist?id=6651237924"
+          style="text-decoration: none"
+          ><h2>摇滚</h2>
+          <p style="padding-bottom: 20px">千禧年代</p>
+          <p>2000年代 新千禧年的年轻浪潮</p></a
+        >
+      </div>
+    </div>
+    <!--第三层第四张图片-->
+    <div
+      class="kapian"
+      style="position: relative; margin-top: -360px; margin-left: 1140px"
+    >
+      <div class="tu">
+        <img src="./444.jpg" />
+      </div>
+      <div class="wenben">
+        <a
+          href="https://music.163.com/#/playlist?id=6666506290"
+          style="text-decoration: none"
+          ><h2>民谣</h2>
+          <p style="padding-bottom: 20px">复兴</p>
+          <p>
+            民谣复兴运动起源于20世纪40年代
+            我们仍能听见回荡其中的时代之声和种种情绪。
+          </p></a
+        >
+      </div>
+    </div>
+
+    <!--第三层第五张图片-->
+    <div
+      class="kapian"
+      style="position: relative; margin-top: -490px; margin-left: 1430px"
+    >
+      <div class="tu">
+        <img src="./555.jpg" />
+      </div>
+      <div class="wenben">
+        <a
+          href="https://music.163.com/#/playlist?id=6916067530"
+          style="text-decoration: none"
+          ><h2>电音</h2>
+          <p style="padding-bottom: 20px">小情歌</p>
+          <p>当电音邂逅深情人声，感受节奏与爱情的灵魂碰撞。</p></a
+        >
+      </div>
+    </div>
+    <!--第四层-->
+    <div style="height: 100px" class="shiping">
+      <div class="yuan" style="margin-left: 260px; margin-top: 150px"></div>
+      <div style="margin-top: -30px; margin-left: 240px; font-size: 25px">
+        &emsp;&emsp;热门推荐
+        <a href="https://music.163.com/#/discover/toplist" class="tczt">
+          &emsp;排行榜&emsp;|
+        </a>
+        <a href="https://music.163.com/#/discover/playlist" class="tczt">
+          &emsp; 歌单&emsp;|</a
+        >
+        <a href="https://music.163.com/#/discover/djradio" class="tczt">
+          &emsp;主播电台&emsp;|</a
+        >
+        <a href="https://music.163.com/#/discover/artist" class="tczt">
+          &emsp; 歌手&emsp;|</a
+        >
+        <a href="https://music.163.com/#/discover/album" class="tczt">
+          &emsp; 新碟上架&emsp;|</a
+        >
+      </div>
+    </div>
+    <!--第五层线-->
+    <div style="border-bottom: 2px solid #c20c0c; margin-top: 80px"></div>
+    <!--第六层-->
+    <div class="main shiping" style="margin-left: 260px; margin-right: 260px">
+      <div class="main-lists">
+        <a href="https://music.163.com/#/playlist?id=5237688457">
+          <audio class="yinpin" src="./吸血鬼.mp3" controls></audio>
+          <img src="./1.jpg"
+        /></a>
+        <p class="dlczt">戴着耳机和棉被来个软乎乎</p>
+        <p style="margin-top: -20px">的拥抱</p>
+      </div>
+      <div class="main-lists">
+        <a href="https://music.163.com/#/playlist?id=3044976713">
+          <audio class="yinpin" src="./吸血鬼.mp3" controls></audio>
+          <img src="./2.jpg"
+        /></a>
+        <p class="dlczt">你少年时代最想保护的那个</p>
+        <p style="margin-top: -20px">人现在怎么样了？</p>
+      </div>
+      <div class="main-lists">
+        <a href="https://music.163.com/#/playlist?id=2426530028">
+          <audio class="yinpin" src="./吸血鬼.mp3" controls></audio>
+          <img src="./3.jpg"
+        /></a>
+        <p class="dlczt">「看书学习」在安静的位置看</p>
+        <p style="margin-top: -20px">热闹的世界</p>
+      </div>
+      <div class="main-lists">
+        <a href="https://music.163.com/#/playlist?id=3097789970">
+          <audio class="yinpin" src="./吸血鬼.mp3" controls></audio>
+          <img src="./4.jpg"
+        /></a>
+        <p class="dlczt">慵懒小调 | 当阳光暖洋洋的</p>
+        <p style="margin-top: -20px">洒在草地上</p>
+      </div>
+      <div class="main-lists">
+        <a href="https://music.163.com/#/playlist?id=510190176">
+          <audio class="yinpin" src="./吸血鬼.mp3" controls></audio>
+          <img src="./5.jpg"
+        /></a>
+        <p class="dlczt">EDM Trap丨狂野不羁的邪</p>
+        <p style="margin-top: -20px">魅低音</p>
+      </div>
+      <div class="main-lists">
+        <a href="https://music.163.com/#/playlist?id=130788961">
+          <audio class="yinpin" src="./吸血鬼.mp3" controls></audio>
+          <img src="./6.jpg"
+        /></a>
+        <p class="dlczt">【怀疑耳机坏了系列】耳机你对</p>
+        <p style="margin-top: -20px">耳朵做了什么</p>
+      </div>
+      <div class="main-lists">
+        <a href="https://music.163.com/#/playlist?id=5133329912">
+          <audio class="yinpin" src="./吸血鬼.mp3" controls></audio>
+          <img src="./7.jpg"
+        /></a>
+        <p class="dlczt">远方的少年郎，是不是偷</p>
+        <p style="margin-top: -20px">偷在想家</p>
+      </div>
+      <div class="main-lists">
+        <a href="https://music.163.com/#/playlist?id=548626796">
+          <audio class="yinpin" src="./吸血鬼.mp3" controls></audio>
+          <img src="./8.jpg"
+        /></a>
+        <p class="dlczt">重温旧梦 电影里的深情告白</p>
+        <p style="margin-top: -20px"></p>
+      </div>
+    </div>
+    <!--第七层-->
+    <div class="bangdang" style="height: 100px">
+      <div
+        class="yuan bangdang"
+        style="margin-left: 270px; margin-top: 30px"
+      ></div>
+      <div style="margin-top: -30px; margin-left: 250px; font-size: 25px">
+        &emsp;&emsp;榜单
+      </div>
+    </div>
+    <!--第八层线-->
+    <div style="border-bottom: 2px solid #c20c0c; margin-top: -40px"></div>
+    <!--第九层-->
+    <div class="flex bangdang" style="margin-left: 260px; margin-right: 260px">
+      <!--第九层第一个盒子-->
+      <div class="djhz">
+        <div class="djtu">
+          <img
+            src="./bd1.jpg"
+            style="
+              width: 120px;
+              height: 120px;
+              box-shadow: 16px 16px 16px rgb(58, 56, 56);
+            "
+          />
+        </div>
+        <div class="hgjz" style="background-color: rgb(216, 216, 216)">
+          <a href="#" class="djztys"> 1 若把你</a>
+        </div>
+        <div class="hgjz">
+          <a href="#" class="djztys"> 2 Past Lives</a>
+        </div>
+        <div class="hgjz" style="background-color: rgb(216, 216, 216)">
+          <a href="#" class="djztys"> 3 夏夜最后的烟火</a>
+        </div>
+        <div class="hgjz">
+          <a href="#" class="djztys"> 4 会魔法的老人</a>
+        </div>
+        <div class="hgjz" style="background-color: rgb(216, 216, 216)">
+          <a href="#" class="djztys"> 5 谁会被吻 (天气说变冷就变冷)</a>
+        </div>
+        <div class="hgjz">
+          <a href="#" class="djztys"> 6 Money Focused Freestyle</a>
+        </div>
+      </div>
+      <!--第九层第二个盒子-->
+      <div class="djhz">
+        <div class="djtu">
+          <img
+            src="./bd2.jpg"
+            style="
+              width: 120px;
+              height: 120px;
+              box-shadow: 16px 16px 16px rgb(58, 56, 56);
+            "
+          />
+        </div>
+        <div class="hgjz" style="background-color: rgb(216, 216, 216)">
+          <a href="#" class="djztys"> 1 100</a>
+        </div>
+        <div class="hgjz">
+          <a href="#" class="djztys"> 2 暧昧三十三天</a>
+        </div>
+        <div class="hgjz" style="background-color: rgb(216, 216, 216)">
+          <a href="#" class="djztys"> 3 会魔法的老人</a>
+        </div>
+        <div class="hgjz">
+          <a href="#" class="djztys"> 4 谁会被吻 (天气说变冷就变冷)</a>
+        </div>
+        <div class="hgjz" style="background-color: rgb(216, 216, 216)">
+          <a href="#" class="djztys"> 5 我在等.2022</a>
+        </div>
+        <div class="hgjz">
+          <a href="#" class="djztys"> 6 仗着</a>
+        </div>
+      </div>
+      <!--第九层第三个盒子-->
+      <div class="djhz">
+        <div class="djtu">
+          <img
+            src="./bd3.jpg"
+            style="
+              width: 120px;
+              height: 120px;
+              box-shadow: 16px 16px 16px rgb(58, 56, 56);
+            "
+          />
+        </div>
+        <div class="hgjz" style="background-color: rgb(216, 216, 216)">
+          <a href="#" class="djztys"> 1 荔枝</a>
+        </div>
+        <div class="hgjz">
+          <a href="#" class="djztys"> 2 不来也不去</a>
+        </div>
+        <div class="hgjz" style="background-color: rgb(216, 216, 216)">
+          <a href="#" class="djztys"> 3 美丽心灵</a>
+        </div>
+        <div class="hgjz">
+          <a href="#" class="djztys"> 4 度过此刻</a>
+        </div>
+        <div class="hgjz" style="background-color: rgb(216, 216, 216)">
+          <a href="#" class="djztys"> 5 缘来似个长</a>
+        </div>
+        <div class="hgjz">
+          <a href="#" class="djztys"> 6 雁书</a>
+        </div>
+      </div>
+    </div>
+    <!--第10层-->
+    <div
+      style="
+        width: 100%;
+        height: 50px;
+        background: -webkit-radial-gradient(
+          bottom,
+          rgb(19, 19, 20),
+          rgb(99, 82, 82),
+          rgba(61, 42, 34, 0.247)
+        );
+      "
+    >
+      <div style="margin: 10px 0px 0px 0px; text-align: center">
+        <div>
+          <a href="#" class="tczt"> &emsp;服务条款&emsp;| </a>
+          <a href="#" class="tczt"> &emsp; 隐私政策&emsp;|</a>
+          <a href="#" class="tczt"> &emsp; 版权投诉&emsp;|</a>
+          <a href="#" class="tczt"> &emsp; 投资者关系&emsp;|</a>
+          <a href="#" class="tczt"> &emsp; 广告合作&emsp;|</a>
+          <a href="#" class="tczt"> &emsp; 廉正举报&emsp;|</a>
+          <a href="#" class="tczt"> &emsp;联系我们&emsp;|</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
